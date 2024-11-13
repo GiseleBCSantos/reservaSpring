@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/LayoutPadrao">
+<head></head>
+<body>
+
+<header th:fragment="header" class="">
+    <h2 class="header__title">Página inicial</h2>
+
+    <ul class="links__list">
+        <li><a th:href="@{'/equipamentos/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Equipamentos</a></li>
+        <li><a th:href="@{'/espacos/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Espaços</a></li>
+        <li><a th:href="@{'/funcionarios/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Funcionários</a></li>
+        <li><a th:href="@{'/reservas/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reservas</a></li>
+    </ul>
+
+</header>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipamento</title>
+</head>
+<body>
+
+<section layout:fragment="conteudo">
+    <h2>Cadastro de equipamentos</h2>
+
+    <form method="post" class="" th:object="${equipamento}">
+
+        <th:block th:insert="~{fragments/MensagemErro}"></th:block>
+
+        <div class="row">
+            <div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+                <label for="descricao" class="form-label control-label">Descrição</label>
+                <input th:field="*{descricao}" type="text" id="descricao" class="form-control">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2 form-group" th:classappend="${#fields.hasErrors('quantidadeDisponivel')} ? has-error">
+                <label  for="quantidadeDisponivel" class="form-label control-label">Quantidade disponível</label>
+                <input th:field="*{quantidadeDisponivel}" type="number" id="quantidadeDisponivel" class="form-control">
+            </div>
+
+            <div class="col-sm-2 form-group" th:classappend="${#fields.hasErrors('quantidadeTotal')} ? has-error">
+                <label for="quantidadeTotal" class="form-label control-label">Quantidade total</label>
+                <input th:field="*{quantidadeTotal}" type="number" id="quantidadeTotal" class="form-control" >
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <button class="btn  btn-primary" type="submit">Salvar</button>
+            <a href="#" class="btn  btn-default">Cancelar</a>
+        </div>
+    </form>
+    
+</section>
+
+</body>
+</html>

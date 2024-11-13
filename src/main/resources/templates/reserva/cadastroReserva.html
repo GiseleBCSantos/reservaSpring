@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Espaco</title>
+</head>
+<body>
+
+<section layout:fragment="conteudo" th:object="${reserva}">
+    <h2>Cadastro de reservas</h2>
+
+    <form class="" method="post" onreset="true">
+
+        <th:block th:include="~{fragments/MensagemErro}"></th:block>
+
+        <div class="row">
+            <div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('dataReserva')} ? has-error">
+                <label for="nome" class="form-label">Data</label>
+                <input type="date" id="nome" class="form-control" th:field="*{dataReserva}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 form-group" th:classappend="${#fields.hasErrors('funcionario')} ? has-error">
+                <label for="funcionario" class="control-label">Funcionario</label>
+                <select name="funcionario" id="funcionario" class="form-control">
+                    <option value="">Selecione o funcionario</option>
+                    <option th:each="funcionario : ${funcionarios}" th:value="${funcionario.id}" th:text="${funcionario.nome}" th:field="*{funcionario}"></option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2 form-group">
+                <input type="radio" class="form-check-input" name="tipoReserva" id="opcao_equipamento" value="equipamento" onclick="mostrarOpcoes()"/>
+                <label for="opcao_equipamento" class="form-check-label mr-3">Equipamento</label>
+            </div>
+
+            <div class="col-sm-2 form-group">
+                <input type="radio" class="form-check-input" name="tipoReserva" id="opcao_espaco" value="espaco"  onclick="mostrarOpcoes()"/>
+                <label for="opcao_espaco" class="form-check-label mr-3">Espaço</label>
+            </div>
+        </div>
+
+        <div class="row opcao_reserva" id="equipamento">
+            <label for="equipamento_select" class="control-label">Equipamentos</label>
+            <select  name="equipamento" id="equipamento_select" class="form-control">
+                <option value="" selected="selected">Selecione o equipamento</option>
+                <option th:each="equipamento : ${equipamentos}" th:value="${equipamento.id}" th:text="${equipamento.descricao}" th:field="*{equipamento}"></option>
+            </select>
+        </div>
+
+        <div class="row opcao_reserva" id="espaco">
+            <label for="espaco_select" class="control-label">Espaços</label>
+            <select  name="espaco" id="espaco_select" class="form-control">
+                <option value="" selected="selected">Selecione o espaço</option>
+                <option th:each="espaco : ${espacos}" th:value="${espaco.id}" th:text="${espaco.descricao}" th:field="*{espaco}"></option>
+            </select>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            <button class="btn  btn-primary" type="submit">Salvar</button>
+            <a href="#" class="btn  btn-default">Cancelar</a>
+        </div>
+
+
+
+
+    </form>
+
+</section>
+
+</body>
+</html>

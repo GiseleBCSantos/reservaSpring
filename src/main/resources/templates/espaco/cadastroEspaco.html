@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Espaco</title>
+</head>
+<body>
+
+<section layout:fragment="conteudo">
+    <h2>Cadastro de espaços</h2>
+
+
+    <form th:object="${espaco}" class="" method="post">
+
+        <th:block th:include="~{fragments/MensagemErro}"></th:block>
+
+
+        <div class="row">
+            <div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+                <label for="descricao" class="form-label">Descrição</label>
+                <input th:field="*{descricao}" type="text" id="descricao" class="form-control">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-check">
+                    <input th:field="*{status}" type="checkbox" id="status" class="form-check-input" >
+                    <label  for="status" class="form-check-label">Status</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class="btn  btn-primary" type="submit">Salvar</button>
+            <a href="#" class="btn  btn-default">Cancelar</a>
+        </div>
+    </form>
+
+</section>
+
+</body>
+</html>

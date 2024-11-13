@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/LayoutPadrao">
+<head>
+<body>
+<section layout:fragment="conteudo">
+  <div class="title_and_button">
+    <h2>Listar funcionários</h2>
+    <a th:href="@{'/funcionarios/novo'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><i class="fa-solid fa-plus add_item"></i></a>
+  </div>
+
+  <div class="table-responsive small">
+    <table class="table table-striped table-sm text-center">
+      <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Modificar</th>
+        <th scope="col">Excluir</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <th:block th:each="funcionario : ${funcionarios}" >
+      <tr>
+        <td th:text="${funcionario.id}"></td>
+        <td th:text="${funcionario.nome}">João</td>
+        <td th:text="${funcionario.email}">joao@email.com</td>
+        <td><i class="fa-regular fa-pen-to-square"></i></td>
+        <td><i class="fa-solid fa-trash"></i></td>
+      </tr>
+
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/LayoutPadrao">
+<head></head>
+<body>
+
+<aside th:fragment="aside" >
+<div class="flex-shrink-0 p-3" style="width: 280px;">
+    <a href="#" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+        <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-5 fw-semibold">Pagina inicial</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#equipamentos-collapse">
+                Equipamentos
+            </button>
+            <div class="collapse" id="equipamentos-collapse" data-bs-parent="#menu">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a th:href="@{'/equipamentos/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Listar</a></li>
+                    <li><a th:href="@{'/equipamentos/novo'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Cadastrar</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="border-top my-3"></li>
+
+        <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#espacos-collapse">
+                Espaços
+            </button>
+            <div class="collapse" id="espacos-collapse" style="" data-bs-parent="#menu">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a th:href="@{'/espacos/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Listar</a></li>
+                    <li><a th:href="@{'/espacos/novo'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Cadastrar</a></li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="border-top my-3"></li>
+
+        <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#funcionarios-collapse">
+                Funcionários
+            </button>
+            <div class="collapse" id="funcionarios-collapse" style="" data-bs-parent="#menu">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a th:href="@{'/funcionarios/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Listar</a></li>
+                    <li><a th:href="@{'/funcionarios/novo'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Cadastrar</a></li>
+
+                </ul>
+            </div>
+        </li>
+        <li class="border-top my-3"></li>
+        <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#reservas-collapse">
+                Reservas
+            </button>
+            <div class="collapse" id="reservas-collapse" style="" data-bs-parent="#menu">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li ><a th:href="@{'/reservas/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Listar</a></li>
+                    <li ><a th:href="@{'/reservas/novo'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Cadastrar</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+</aside>
+
+
+</body>
+</html>

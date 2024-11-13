@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<xml statu="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36}: %msg%n" />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="br.com.ifpi.catce.reservaSpring.controller" level="info" />
+
+        <Logger name="org.hibernate.SQL" level="debug" />
+
+        <Root level="error">
+            <AppendRef ref="Console" />
+        </Root>
+    </Loggers>
+
+</xml>

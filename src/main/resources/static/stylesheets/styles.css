@@ -26,9 +26,16 @@ form{
 }
 
 .add_item{
-    background-color: deepskyblue;
+    background-color: darkgray;
+    border-radius: 10px;
     padding: 10px;
-    border-radius: 50%;
+    transition: background-color .5s, scale .5s;
+    color: white;
+
+    &:hover{
+        background-color: rgba(128, 128, 128, 0.58);
+        scale: 1.05;
+    }
 }
 
 header{
@@ -56,11 +63,19 @@ ul.links__list{
 }
 
 .links__list li{
-    background-color: deepskyblue;
+    background-color: darkgray;
     border-radius: 10px;
     padding: 10px;
+    transition: background-color .5s, scale .5s;
+    & a{
+        color: white;
+    }
 
 
+    &:hover{
+        background-color: rgba(128, 128, 128, 0.58);
+        scale: 1.05;
+    }
 }
 
 .has-error{

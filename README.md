@@ -1,5 +1,3 @@
-# Site para controle de Reservas de Equipamentos e Espaços feito por Funcionários
-
 # Spring Reservas
 
 > Site para controle de Reservas de Equipamentos e Espaços feito por Funcionários

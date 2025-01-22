@@ -1,6 +1,9 @@
-![image](https://github.com/user-attachments/assets/f52aca0c-a42e-4023-9018-2acdce161679)# Spring Reservas
-
 > Site para controle de Reservas de Equipamentos e Espaços feito por Funcionários
+
+<div style="display: flex; justify-content: space-evenly">
+    <img src="https://github.com/user-attachments/assets/f52aca0c-a42e-4023-9018-2acdce161679" alt="Spring Reservas" width="300">
+    <img src="https://github.com/user-attachments/assets/47b74051-6018-49b0-afa1-299ba0e57620" alt="Página de cadastro" width="300">
+</div>
 
 ## 🚀 Instalando reservaSpring
 

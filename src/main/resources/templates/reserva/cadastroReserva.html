@@ -10,7 +10,10 @@
 <body>
 
 <section layout:fragment="conteudo" th:object="${reserva}">
-    <h2>Cadastro de reservas</h2>
+    <div class="title_and_button">
+        <h2>Cadastro de reservas</h2>
+        <a th:href="@{'/reservas/listar'}" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><i class="fa-solid fa-arrow-left add_item"></i></a>
+    </div>
 
     <form class="" method="post" onreset="true">
 

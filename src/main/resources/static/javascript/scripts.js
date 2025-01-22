@@ -18,8 +18,3 @@ function mostrarOpcoes(){
         }
     }
 }
-
-
-function onToggle(){
-
-}

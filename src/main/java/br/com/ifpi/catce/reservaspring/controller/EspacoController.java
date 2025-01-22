@@ -1,11 +1,16 @@
 package br.com.ifpi.catce.reservaspring.controller;
 
+import br.com.ifpi.catce.reservaspring.controller.page.PageWrapper;
 import br.com.ifpi.catce.reservaspring.model.Espaco;
 import br.com.ifpi.catce.reservaspring.repository.EspacoRepository;
+import br.com.ifpi.catce.reservaspring.repository.filter.EspacoFilter;
 import br.com.ifpi.catce.reservaspring.service.EspacoService;
 import br.com.ifpi.catce.reservaspring.service.exceptions.DescricaoJaCadastrada;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +26,15 @@ public class EspacoController {
     @Autowired
     EspacoService espacoService;
 
+    @Autowired
+    EspacoRepository espacos;
+
     @GetMapping("/listar")
-    public ModelAndView listar() {
+    public ModelAndView listar(EspacoFilter espacoFilter, BindingResult result, @PageableDefault(size = 1) Pageable pageable, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("espaco/listarEspaco");
-        mv.addObject("espacos", espacoService.listar());
+
+        PageWrapper<Espaco> pageWrapper = new PageWrapper<>(espacos.filtrar(espacoFilter, pageable), request);
+        mv.addObject("pagina", pageWrapper);
         return mv;
     }
 

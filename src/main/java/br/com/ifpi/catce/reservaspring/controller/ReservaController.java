@@ -1,17 +1,22 @@
 package br.com.ifpi.catce.reservaspring.controller;
 
+import br.com.ifpi.catce.reservaspring.controller.page.PageWrapper;
 import br.com.ifpi.catce.reservaspring.model.Funcionario;
 import br.com.ifpi.catce.reservaspring.model.Reserva;
 import br.com.ifpi.catce.reservaspring.repository.EquipamentoRepository;
 import br.com.ifpi.catce.reservaspring.repository.EspacoRepository;
 import br.com.ifpi.catce.reservaspring.repository.FuncionarioRepository;
 import br.com.ifpi.catce.reservaspring.repository.ReservaRepository;
+import br.com.ifpi.catce.reservaspring.repository.filter.ReservaFilter;
 import br.com.ifpi.catce.reservaspring.service.EquipamentoService;
 import br.com.ifpi.catce.reservaspring.service.EspacoService;
 import br.com.ifpi.catce.reservaspring.service.FuncionarioService;
 import br.com.ifpi.catce.reservaspring.service.ReservaService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,11 +42,19 @@ public class ReservaController {
     @Autowired
     private EspacoService espacoService;
 
+    @Autowired
+    private ReservaRepository reservaRepository;
 
     @GetMapping("/listar")
-    public ModelAndView listar() {
+    public ModelAndView listar(ReservaFilter filtro, BindingResult result, @PageableDefault(size = 2) Pageable pageable, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("reserva/listarReserva");
-        mv.addObject("reservas", reservaService.listar());
+
+        PageWrapper<Reserva> pageWrapper = new PageWrapper<>(reservaRepository.filtrar(filtro, pageable), request);
+
+        mv.addObject("pagina", pageWrapper);
+        mv.addObject("funcionarios", funcionarioService.listar());
+        mv.addObject("equipamentos", equipamentoService.listar());
+        mv.addObject("espacos", espacoService.listar());
         return mv;
     }
 

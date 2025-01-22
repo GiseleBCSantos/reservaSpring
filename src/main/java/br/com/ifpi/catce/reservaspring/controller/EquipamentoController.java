@@ -1,11 +1,16 @@
 package br.com.ifpi.catce.reservaspring.controller;
 
+import br.com.ifpi.catce.reservaspring.controller.page.PageWrapper;
 import br.com.ifpi.catce.reservaspring.model.Equipamento;
 import br.com.ifpi.catce.reservaspring.repository.EquipamentoRepository;
+import br.com.ifpi.catce.reservaspring.repository.filter.EquipamentoFilter;
 import br.com.ifpi.catce.reservaspring.service.EquipamentoService;
 import br.com.ifpi.catce.reservaspring.service.exceptions.DescricaoJaCadastrada;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,10 +27,15 @@ public class EquipamentoController {
     @Autowired
     private EquipamentoService equipamentoService;
 
+    @Autowired
+    private EquipamentoRepository equipamentos;
+
     @GetMapping("/listar")
-    public ModelAndView listar() {
-        ModelAndView mv = new ModelAndView("/equipamento/listarEquipamento");
-        mv.addObject("equipamentos", equipamentoService.listar());
+    public ModelAndView listar(EquipamentoFilter equipamentoFilter, BindingResult bindingResult, @PageableDefault(size = 2) Pageable pageable, HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("equipamento/listarEquipamento");
+
+        PageWrapper<Equipamento> pageWrapper = new PageWrapper<>(equipamentos.filtrar(equipamentoFilter, pageable), request);
+        mv.addObject("pagina", pageWrapper);
         return mv;
     }
 
@@ -48,7 +58,7 @@ public class EquipamentoController {
             return cadastro(equipamento);
         }
         attributes.addFlashAttribute("mensagem", "Equipamento cadastrado com sucesso!");
-        return new ModelAndView("redirect:/equipamentos/listar");
+        return new ModelAndView("redirect:/equipamentos");
     }
 
 }

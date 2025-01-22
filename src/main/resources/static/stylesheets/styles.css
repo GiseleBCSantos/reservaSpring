@@ -1,11 +1,30 @@
+:root {
+    --coffee-dark: #4a3728;
+    --coffee-medium: #8b4513;
+    --coffee-light: #d2b48c;
+    --coffee-cream: #f5e6d3;
+    --coffee-text: #2c1e14;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--coffee-cream);
+    color: var(--coffee-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .conteudo{
     padding: 50px;
+    flex: 1;
 }
 
 form{
@@ -25,15 +44,21 @@ form{
     margin-bottom: 20px;
 }
 
+.title_and_button > h2{
+    color: var(--coffee-medium);
+    font-size: 2.1rem;
+    font-weight: bold;
+}
+
 .add_item{
-    background-color: darkgray;
+    background-color: var(--coffee-dark);
     border-radius: 10px;
     padding: 10px;
     transition: background-color .5s, scale .5s;
     color: white;
 
     &:hover{
-        background-color: rgba(128, 128, 128, 0.58);
+        background-color: var(--coffee-medium);
         scale: 1.05;
     }
 }
@@ -43,12 +68,13 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: lightgray;
+    background-color: var(--coffee-dark);
+    color: var(--coffee-cream);
     box-shadow: 1px 1px 5px gray;
 }
 
 .header__title{
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-weight: bold;
     margin: 0;
     cursor: pointer;
@@ -63,17 +89,17 @@ ul.links__list{
 }
 
 .links__list li{
-    background-color: darkgray;
+    /*background-color: darkgray;*/
     border-radius: 10px;
     padding: 10px;
     transition: background-color .5s, scale .5s;
     & a{
-        color: white;
+        color: var(--coffee-light);
+        font-size: 1.3rem;
     }
 
-
     &:hover{
-        background-color: rgba(128, 128, 128, 0.58);
+        color: var(--coffee-cream);
         scale: 1.05;
     }
 }
@@ -86,4 +112,20 @@ ul.links__list{
         box-shadow: inset 1px 1px 0px 0px hotpink
 
     }
+}
+
+table{
+    background-color: whitesmoke;
+}
+
+th a{
+    color: var(--coffee-medium);
+}
+
+footer{
+    background-color: var(--coffee-dark);
+    color: var(--coffee-cream);
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
 }

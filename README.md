@@ -1,7 +1,6 @@
-# Spring Reservas
+![image](https://github.com/user-attachments/assets/f52aca0c-a42e-4023-9018-2acdce161679)# Spring Reservas
 
 > Site para controle de Reservas de Equipamentos e Espaços feito por Funcionários
-
 
 ## 🚀 Instalando reservaSpring
 
@@ -31,5 +30,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Adicionar templates de listagem e criação de Equipamento, Espaço, Funcionários e Reservas
 - [x] Vincular controllers a templates, vinculando seus atributos e com mensagens de validação
 - [x] Adicionar Exceptions para nomes, emails e descrições já cadastradas
+- [x] Adicionar paginação, filtragem e ordenação nas buscas
+- [x] Melhorar o visual 
 - [ ] Finalizar CRUD
 - [ ] Adicionar autenticação
